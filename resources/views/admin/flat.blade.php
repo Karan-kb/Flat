@@ -55,7 +55,7 @@
           <label>Flat Title :</label>
           <input class="text_color" type="text" name="title" placeholder="Title here" required="">
 
-    </div>
+          </div>
 
     <div class="div_design">
           <label>Flat Description:</label>
@@ -65,10 +65,13 @@
 
     <div class="div_design">
           <label>Flat Rent :</label>
-          <input class="text_color" type="number" name="rent" placeholder="Rent here" required="">
+          <input class="text_color" type="number" name="rent" placeholder="Rent here" required>
 
     </div>
-
+    <div class="div_design">
+      <label for="location">Flat Location Here :</label>
+      <input class="text_color" type="text" name="location" id="location" placeholder="Flat location">
+    </div>
     
 
     <div class="div_design">
@@ -90,6 +93,7 @@
           <input type="file" name="image" required="">
 
     </div>
+
 
     <div class="div_design">
           

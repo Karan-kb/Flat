@@ -11,7 +11,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="images/favicon.png" type="">
-      <title>Famms - Fashion HTML Template</title>
+      <title>Flat Rental System</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
       <!-- font awesome style -->
@@ -32,22 +32,22 @@
       </div>
       <!-- why section -->
 
-      @include('home.why')
-          <!-- end why section -->
       
+          <!-- end why section -->
+         
       <!-- arrival section -->
-      @include('home.arrival')
+      
       <!-- end arrival section -->
       
       <!-- product section -->
-      @include('home.product')
+      @include('home.flat')
            <!-- end product section -->
         
       <!-- subscribe section -->
-      @include('home.subscribe')
+      
       <!-- end subscribe section -->
       <!-- client section -->
-      @include('home.client')
+      
       <!-- end client section -->
       <!-- footer start -->
       @include('home.footer')
@@ -59,6 +59,17 @@
          
          </p>
       </div>
+      
+      <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+    </script>
       <!-- jQery -->
       <script src="home/js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->

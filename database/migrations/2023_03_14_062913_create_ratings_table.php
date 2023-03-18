@@ -9,23 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('ratings', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->unsignedBigInteger('flat_id');
-            $table->enum('rating',range(1,5));
-            $table->text('comment')->nullable();
-            $table->enum('status',["visible","hidden"])->default("hidden");
+            $table->integer('water_rating')->nullable();
+            $table->integer('location_rating')->nullable();
+            $table->integer('price_rating')->nullable();
+            $table->integer('transportation_rating')->nullable();
+            $table->integer('cleanliness_rating')->nullable();
+            $table->double('average')->nullable();
             $table->timestamps();
-    
-            // Define foreign keys
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('flat_id')->references('id')->on('flats')->onDelete('cascade');
         });
     }
-    
 
     /**
      * Reverse the migrations.

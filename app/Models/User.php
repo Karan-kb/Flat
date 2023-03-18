@@ -19,6 +19,7 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -62,8 +63,9 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function ratings()
-    {
-        return $this->hasMany(Rating::class);
+
+    public function flats() {
+        return $this->belongsToMany(User::class, 'ratings', 'user_id', 'flat_id')->withPivot(['water_rating', 'location_rating', 'price_rating', 'transportation_rating', 'cleanliness_rating']);
     }
+
 }

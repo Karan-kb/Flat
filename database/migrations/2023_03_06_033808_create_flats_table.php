@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('description')->nullable();
+            $table->string('location')->nullable();
             $table->string('image')->nullable();
             $table->string('category')->nullable();
             $table->string('quantity')->nullable();
             $table->string('rent')->nullable();
+            
+
             
             $table->timestamps();
         });

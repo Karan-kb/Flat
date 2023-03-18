@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 
 use App\Models\Flat;
+use App\Models\User;
+use App\Models\Rating;
 
 class AdminController extends Controller
 {
+
     public function view_category(){
 
         $data=category::all();
@@ -38,23 +41,20 @@ class AdminController extends Controller
 
 
     public function add_flat(){
-
         $category=category::all();
         return view('admin.flat',compact('category'));
 
     }
 
     public function show_flat(Request $request){
-        
-          $flat=new flat;
-
-          $flat->title=$request->title;
+        $flat = new Flat;  
+        $flat->title=$request->title;
 
           $flat->description=$request->description;
+          $flat->location=$request->location;
 
           $flat->rent=$request->rent;
-
-          
+         
 
           $flat->category=$request->category;
 
@@ -66,7 +66,15 @@ class AdminController extends Controller
           $flat->image=$imagename;
 
           $flat->save();
-
           return redirect()->back();
     }
+
+
+    public function view_flat(){
+
+        $flat=flat::all();
+        return view('admin.view_flat',compact('flat'));
+    }
+   
+
 }

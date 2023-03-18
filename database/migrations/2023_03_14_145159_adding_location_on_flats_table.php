@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('flats', function (Blueprint $table) {
-            $table->integer('rating');
-           
-            
-           
+        Schema::table('flats', function (Blueprint $table) {
+            $table->string('location')->nullable();
         });
     }
 

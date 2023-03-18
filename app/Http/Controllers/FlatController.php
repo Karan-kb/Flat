@@ -8,14 +8,14 @@ class FlatController extends Controller
 {
     public function index()
     {
-        $flats = Flat::all();
-        return view('flat-listing', ['flats' => $flats]);
+        $flat = Flat::all();
+        return view('home.userpage', compact('flat'));
 
         foreach ($flats as $flat) {
-            // Get all ratings for this flat
+             //Get all ratings for this flat
             $flatRatings = $flat->ratings;
 
-            // Display the flat's name and ratings
+            //Display the flat's name and ratings
             echo $flat->name . ':';
             foreach ($flatRatings as $rating) {
                 echo $rating->score . ' ';

@@ -9,20 +9,15 @@ use Illuminate\Database\Eloquent\Model;
 class Flat extends Model
 {
     use HasFactory;
-}
+    protected $table = 'flats';
 
-class Flat extends Model
-{
-    // Define a one-to-many relationship with the Rating model
-    public function ratings()
-    {
-        return $this->hasMany(Rating::class);
+    public function getFlats()
+   {
+      return Flat::all();
+   }
+
+    public function users() {
+        return $this->belongsToMany(User::class, 'ratings', 'user_id', 'flat_id')->withPivot(['water_rating', 'location_rating', 'price_rating', 'transportation_rating', 'cleanliness_rating']);
     }
 
-    public function averageRating()
-{
-    return $this->ratings()->avg('score');
 }
-
-}
-
