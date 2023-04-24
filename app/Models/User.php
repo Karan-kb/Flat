@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\Rating;
 
 class User extends Authenticatable
 {
@@ -20,6 +20,7 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
     protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -63,9 +64,44 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-
-    public function flats() {
-        return $this->belongsToMany(User::class, 'ratings', 'user_id', 'flat_id')->withPivot(['water_rating', 'location_rating', 'price_rating', 'transportation_rating', 'cleanliness_rating']);
+    /**
+     * Get the flats that belong to the user.
+     */
+    public function flats()
+    {
+        return $this->belongsToMany(Flat::class, 'ratings', 'user_id', 'flat_id')->withPivot(['water_rating', 'location_rating', 'price_rating', 'transportation_rating', 'cleanliness_rating']);
     }
+
+    /**
+     * Get the ratings that belong to the user.
+     */
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
+    /**
+     * Get the flats that have been rated by both the user and the other user.
+     *
+     * @param  User  $otherUser
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getCommonRatedFlats(User $otherUser)
+    {
+        $userFlatIds = $this->ratings()->pluck('flat_id');
+        $otherUserFlatIds = $otherUser->ratings()->pluck('flat_id');
+
+        return Flat::whereIn('id', $userFlatIds)->whereIn('id', $otherUserFlatIds)->get();
+    }
+
+    public function getFlatRating($flat_id)
+{
+    $rating = $this->ratings()->where('flat_id', $flat_id)->first();
+    return $rating ? $rating->value : 0;
+}
+public function hasRatedFlat($flat)
+{
+    return $this->ratings()->where('flat_id', $flat->id)->exists();
+}
 
 }

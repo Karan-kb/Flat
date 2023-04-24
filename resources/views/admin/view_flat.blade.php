@@ -17,16 +17,19 @@
         .font_size{
             text-align:center;
             font-size: 40px;
-            padding-top:40px;
+            padding-top:20px;
         }
 
         .img_size{
-            width:150px;
-            width:150px;
+          max-width:100px;
+          height:100px;
+         
+            
             }
         .th_color{
-            background= black;
+            background:skyblue;
         }
+        
     </style>
   </head>
   <body>
@@ -55,27 +58,41 @@
       @include('admin.header')
         <!-- partial -->
         <div class="main-panel">
-          <div class="content-wrappers">
+          <div class="content-wrapper">
 
 
           <h2 class="font_size">Flats</h2>
+
             <table class="center">
-                <tr>
+
+                <tr class="th_color">
                     <th>Flat Title</th>
                     <th>Description</th>
-                    <th>Category</th>
+                    <th >Category</th>
                     <th>Flat Rent</th>
+                    <th>Phone</th>
                     <th>Image</th>
                     <th>Location</th>
-</tr>
+                    <th>Delete </th>
+                    <th>Edit</th>  
+                </tr>
 @foreach($flat as $flat)
-<tr class="th_color">
+<tr>
     <td >{{$flat->title}}</td>
     <td>{{$flat->description}}</td>
     <td>{{$flat->category}}</td>
+   
     <td>{{$flat->rent}}</td>
+    <td>{{$flat->phone}}</td>
+  
     <td><img class="img_size" src="/flat/{{$flat->image}}"></td>
     <td>{{$flat->location}}</td>
+    <td>
+      <a class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this flat?')" href="{{url('delete_flat',$flat->id)}}">Delete</a>
+    </td>
+    <td>
+    <a class="btn btn-success" href="{{url('update_flat',$flat->id)}}">Edit</a>
+    </td>
 </tr>
 @endforeach
 </table>

@@ -2,67 +2,47 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use http\Env\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class Rating extends Model
 {
     use HasFactory;
-   
-    function oldUserRating($request) {
-        return DB::table('ratings')
-            ->where('user', '=', Auth::id())
-            ->where('flat', '=', $request->flat)
-            ->get();
+
+    protected $table = 'ratings';
+
+    protected $fillable = [
+        'user_id',
+        'flat_id',
+        'water_rating',
+       
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
-    function getUserChargingStationRating($id) {
-        return DB::table('ratings')
-            ->join('flats', 'ratings.flat', '=', 'flat.id')
-            
-            ->select('ratings.id as r_id',
-                'ratings.flat as r_fid',
-                'flats.title as f_name',
-                'ratings.rating as rating',
-                
-            )->where('ratings.user', '=', $id)
-            ->get();
+    public function flat()
+    {
+        return $this->belongsTo(Flat::class);
     }
 
-    function insertRating($request) {
-        $now = Carbon::now();
-
-        DB::table('ratings')->insert([
-            'user' => Auth::id(),
-            'flat' => $request->get('flat'),
-            'rating' => $request->get('rating'),
-            'created_at' => $now,
-            'updated_at' => $now
-        ]);
+    public function getAverageRating()
+    {
+        $total = 0;
+        $total += $this->water_rating;
+        
+        return $total / 5;
     }
 
-    function userRatings() {
-        return DB::table('ratings')
-            ->select('id',
-                'flat',
-                'rating'
-            )->where('ratings.user', '=', Auth::id())
-            ->get();
-    }
-
-    function updateRating($request) {
-        $now = Carbon::now();
-
-        DB::table('ratings')
-            ->where('user', '=', Auth::id())
-            ->where('flat', '=', $request->flat)
-            ->update([
-                'rating' => $request->rating,
-                'updated_at' => $now
-            ]);
+    public static function getAverageRatingForFlat($flat_id)
+    {
+        $ratings = Rating::where('flat_id', $flat_id)->get();
+        $total = 0;
+        foreach ($ratings as $rating) {
+            $total += $rating->getAverageRating();
+        }
+        return $total / count($ratings);
     }
 }

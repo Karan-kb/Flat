@@ -47,7 +47,7 @@
 
           <h1 class="font_size">Add Flat</h1>
 
-          <form action="{{url('/show_flat')}}" method="POST" enctype="multipart/form-data">
+          <form id="myForm" action="{{url('/show_flat')}}" method="POST" enctype="multipart/form-data">
 
           @csrf
          
@@ -72,6 +72,12 @@
       <label for="location">Flat Location Here :</label>
       <input class="text_color" type="text" name="location" id="location" placeholder="Flat location">
     </div>
+
+    <div class="div_design">
+          <label>Phone :</label>
+          <input class="text_color" type="number" name="phone" placeholder="Phone" required>
+
+    </div>
     
 
     <div class="div_design">
@@ -87,6 +93,8 @@
           </select>
 
     </div>
+   
+
 
     <div class="div_design">
           <label>Flat Image Here :</label>
@@ -112,5 +120,19 @@
     @include('admin.script')
     <!-- End custom js for this page -->
   </body>
+  <script>
+  // get the form element
+  const myForm = document.getElementById('myForm');
+
+  // add an event listener to the form
+  myForm.addEventListener('submit', (event) => {
+    // prevent the form from submitting if rent is negative
+    const rentInput = myForm.querySelector('input[name="rent"]');
+    if (rentInput.value < 0) {
+      event.preventDefault();
+      alert('Rent cannot be negative.');
+    }
+  });
+    </script>
 </html>
 

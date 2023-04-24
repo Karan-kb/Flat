@@ -23,7 +23,7 @@
         <div>
 {{--            left--}}
             <div>
-                <form method="POST" action="{{route('getRecommendation')}}">
+                <form method="POST" action="{{url('/recommend')}}">
                     @csrf
                     <table>
                         <tr>

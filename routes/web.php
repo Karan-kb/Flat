@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecommendationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
@@ -23,9 +24,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    }
+    Route::get(
+        '/dashboard',
+        function () {
+            return view('dashboard');
+        }
     )->name('dashboard');
 });
 
@@ -69,6 +72,36 @@ route::post('/rate', [HomeController::class, 'rate'])->name('rate.store');
 route::get('/flat_search', [HomeController::class, 'flat_search']);
 
 Route::get('/recommend', [RecommendationController::class, 'getRecommendation'])
-->name('getRecommendation');
+    ->name('getRecommendation');
 Route::post('/recommend', [RecommendationController::class, 'getRecommendation'])
-->name('getRecommendation');
+    ->name('getRecommendation');
+
+route::get('/flat_details/{id}', [HomeController::class, 'flat_details']);
+route::get('/delete_flat/{id}', [AdminController::class, 'delete_flat']);
+
+route::get('/update_flat/{id}', [AdminController::class, 'update_flat']);
+
+route::post('/update_flat_confirm/{id}', [AdminController::class, 'update_flat_confirm']);
+
+Route::get('/recommemd/log', [RecommendController::class, 'recommend_log'])->name('recommend.log');
+
+Route::get('/simple_flat', [RecommendController::class, 'simple_flat'])->name('simple.flat');
+route::post('/rent/{id}', [HomeController::class, 'rent']);
+route::get('/show_cart', [HomeController::class, 'show_cart']);
+
+
+route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart']);
+
+route::get('/cash_rent', [HomeController::class, 'cash_rent']);
+
+route::get('/stripe/{totalrent}', [HomeController::class, 'stripe']);
+
+Route::post('stripe/{totalrent}', [HomeController::class, 'stripePost'])->name('stripe.post');
+
+route::get('/order', [AdminController::class, 'order']);
+route::get('/recommendations', [RecommendationController::class, 'generateRecommendations']);
+//Route::get('/recommendations', 'RecommendationController@showRecommendations')->name('recommendations');
+
+route::get('/about_us', [HomeController::class, 'about_us']);
+
+Route::get('/flats', 'HomeController@flat');

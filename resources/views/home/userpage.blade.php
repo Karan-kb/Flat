@@ -10,7 +10,7 @@
       <meta name="keywords" content="" />
       <meta name="description" content="" />
       <meta name="author" content="" />
-      <link rel="shortcut icon" href="images/favicon.png" type="">
+      
       <title>Flat Rental System</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
@@ -27,7 +27,7 @@
          @include('home.header')
          <!-- end header section -->
          <!-- slider section -->
-         @include('home.slider')
+         @include('home.flat')
          <!-- end slider section -->
       </div>
       <!-- why section -->
@@ -40,7 +40,7 @@
       <!-- end arrival section -->
       
       <!-- product section -->
-      @include('home.flat')
+     
            <!-- end product section -->
         
       <!-- subscribe section -->
@@ -50,7 +50,7 @@
       
       <!-- end client section -->
       <!-- footer start -->
-      @include('home.footer')
+     
       <!-- footer end -->
       <div class="cpy_">
          <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>

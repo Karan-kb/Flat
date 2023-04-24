@@ -27,9 +27,18 @@
                            <a href="{{url('rate_flat',$flats->id)}}" class="option1">
                            Rate this flat
                            </a>
-                           <a href="" class="option2">
-                           Buy Now
+                           <a href="{{url('flat_details',$flats->id)}}" class="option1">
+                           Flat Details
                            </a>
+                           <form action="{{url('rent',$flats->id)}}" method="Post">
+                              @csrf
+                              <div class="row">
+                                 <div class="col-md-4">
+                              <input type="submit" value="Rent">
+</div>
+
+</div>
+</form>
                         </div>
                      </div>
                      <div class="img-box">
@@ -42,6 +51,8 @@
                         <h6>
                         Rs.{{$flats->rent}}
                         </h6>
+
+                        
                      </div>
                   </div>
                   

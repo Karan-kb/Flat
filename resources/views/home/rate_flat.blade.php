@@ -112,7 +112,7 @@ button[type="submit"]:hover {
       <p style="color: tomato; font-weight: 700; font-size: 1.5rem">{{$flat->title}}</p>
     </div>
   <div>
-    <label for="water-rating">Water:</label>
+    <label for="water-rating">Rating:</label>
     <div>
       
       <div class="rating">
@@ -129,68 +129,7 @@ button[type="submit"]:hover {
       </div>
     </div>
   
-    <div>
-      <label for="location-rating">Location:</label>
-      <div class="rating">
-        <input type="radio" id="location-rating-5" name="location_rating" value="5">
-        <label for="location-rating-5">&#9733;</label>
-        <input type="radio" id="location-rating-4" name="location_rating" value="4">
-        <label for="location-rating-4">&#9733;</label>
-        <input type="radio" id="location-rating-3" name="location_rating" value="3">
-        <label for="location-rating-3">&#9733;</label>
-        <input type="radio" id="location-rating-2" name="location_rating" value="2">
-        <label for="location-rating-2">&#9733;</label>
-        <input type="radio" id="location-rating-1" name="location_rating" value="1">
-        <label for="location-rating-1">&#9733;</label>
-      </div>
-    </div>
-  
-  <div>
-    <label for="price-rating">Price:</label>
-    <div class="rating">
-      <input type="radio" id="price-rating-5" name="price_rating" value="5">
-      <label for="price-rating-5">&#9733;</label>
-      <input type="radio" id="price-rating-4" name="price_rating" value="4">
-      <label for="price-rating-4">&#9733;</label>
-      <input type="radio" id="price-rating-3" name="price_rating" value="3">
-      <label for="price-rating-3">&#9733;</label>
-      <input type="radio" id="price-rating-2" name="price_rating" value="2">
-      <label for="price-rating-2">&#9733;</label>
-      <input type="radio" id="price-rating-1" name="price_rating" value="1">
-      <label for="price-rating-1">&#9733;</label>
-    </div>
-  </div>
-  
-  <div>
-    <label for="transportation-rating">Transportation:</label>
-    <div class="rating">
-      <input type="radio" id="transportation-rating-5" name="transportation_rating" value="5">
-      <label for="transportation-rating-5">&#9733;</label>
-      <input type="radio" id="transportation-rating-4" name="transportation_rating" value="4">
-      <label for="transportation-rating-4">&#9733;</label>
-      <input type="radio" id="transportation-rating-3" name="transportation_rating" value="3">
-      <label for="transportation-rating-3">&#9733;</label>
-      <input type="radio" id="transportation-rating-2" name="transportation_rating" value="2">
-      <label for="transportation-rating-2">&#9733;</label>
-      <input type="radio" id="transportation-rating-1" name="transportation_rating" value="1">
-      <label for="transportation-rating-1">&#9733;</label>
-    </div>
-  </div>
-
-  <div>
-    <label for="cleanliness-rating">Cleanliness:</label>
-    <div class="rating">
-      <input type="radio" id="cleanliness-rating-5" name="cleanliness_rating" value="5">
-      <label for="cleanliness-rating-5">&#9733;</label>
-      <input type="radio" id="cleanliness-rating-4" name="cleanliness_rating" value="4">
-      <label for="cleanliness-rating-4">&#9733;</label>
-      <input type="radio" id="cleanliness-rating-3" name="cleanliness_rating" value="3">
-      <label for="cleanliness-rating-3">&#9733;</label>
-      <input type="radio" id="cleanliness-rating-2" name="cleanliness_rating" value="2">
-      <label for="cleanliness-rating-2">&#9733;</label>
-      <input type="radio" id="cleanliness-rating-1" name="cleanliness_rating" value="1">
-      <label for="cleanliness-rating-1">&#9733;</label>
-    </div>
+    
   </div>
   <button type="submit">Submit</button>
 </form><br/>
