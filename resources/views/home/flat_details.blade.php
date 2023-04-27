@@ -48,10 +48,15 @@
                         <h8 style="color:black">
                            Category:{{$flat->category}}
                         </h8> <br />
-
+                       
                         <h8 style="color:black">
                            Phone:{{$flat->phone}}
-                        </h8> <br />
+                        </h8><br />
+
+                        <h8 style="color:black">
+                           Location:{{$flat->location}}
+                        </h8><br />
+                  
                         
                         
                        
@@ -61,6 +66,9 @@
 
                     <form action="{{url('rent',$flat->id)}}" method="Post">
                               @csrf
+
+                      
+
                               <div class="row">
                                  <div class="col-md-4">
                               <input type="submit" value="Rent">
@@ -88,11 +96,7 @@
      
       <!-- footer end -->
       <div class="cpy_">
-         <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
          
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-         
-         </p>
       </div>
       
       <script>

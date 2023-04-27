@@ -2,57 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Flat;
-use App\Models\Rating;
 use Illuminate\Support\Facades\Auth;
-
-
-
+use App\Models\Rating;
 
 class RatingController extends Controller
 {
-    /**
-     * Show the form for creating a new rating.
-     *
-     * @param  \App\Models\Flat  $flat
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Flat $flat)
+    public function store($flat_id, $rating)
     {
-        return view('ratings.create', compact('flat'));
-    }
-
-    /**
-     * Store a newly created rating in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Flat  $flat
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // Retrieve the authenticated user's id
         $user = Auth::user();
-    
-        $validatedData = $request->validate([
-            'water_rating' => 'required|integer|between:1,5',
-            'location_rating' => 'required|integer|between:1,5',
-            'price_rating' => 'required|integer|between:1,5',
-            'transportation_rating' => 'required|integer|between:1,5',
-            'cleanliness_rating' => 'required|integer|between:1,5',
-            'flat_id' => 'required|exists:flats,id',
-            'comment' => 'nullable|string|max:255',
-        ]);
-    
-        // Create a new rating instance and associate it with the authenticated user
-        $rating = new Rating($validatedData);
-        $rating->user_id = $user_id;
-        $rating->save();
-    
-    
-        return redirect()->route('ratings.index')
-            ->with('success', 'Rating created successfully.');
-    }
 
+        // Check if the user has already rated this flat
+        $existing_rating = Rating::where('user_id', $user->id)
+            ->where('flat_id', $flat_id)
+            ->first();
+
+        if ($existing_rating) {
+            // Update the existing rating
+            $existing_rating->water_rating = $rating;
+            $existing_rating->save();
+        } else {
+            // Create a new rating
+            $new_rating = new Rating([
+                'user_id' => $user->id,
+                'flat_id' => $flat_id,
+                'water_rating' => $rating,
+            ]);
+            $new_rating->save();
+        }
+
+        return redirect()->back();
+    }
 }

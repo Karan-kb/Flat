@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Rating;
+use App\Models\Recommendation;
+
 
 class User extends Authenticatable
 {
@@ -95,13 +97,17 @@ class User extends Authenticatable
     }
 
     public function getFlatRating($flat_id)
-{
-    $rating = $this->ratings()->where('flat_id', $flat_id)->first();
-    return $rating ? $rating->value : 0;
-}
-public function hasRatedFlat($flat)
-{
-    return $this->ratings()->where('flat_id', $flat->id)->exists();
-}
+    {
+        $rating = $this->ratings()->where('flat_id', $flat_id)->first();
+        return $rating ? $rating->value : 0;
+    }
+    public function hasRatedFlat($flat)
+    {
+        return $this->ratings()->where('flat_id', $flat->id)->exists();
+    }
+    public function recommendations()
+    {
+        return $this->hasMany(Recommendation::class);
+    }
 
 }

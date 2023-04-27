@@ -10,6 +10,7 @@ use App\Models\Flat;
 use App\Models\User;
 use App\Models\Rating;
 use App\Models\Order;
+use PDF;
 
 use App\Models\Rent;
 
@@ -132,6 +133,16 @@ class AdminController extends Controller
     $order= rent::all();
 
     return view('admin.order',compact('order'));
+
+   }
+
+   public function print_pdf($id){
+
+    $rent=rent::find($id);
+     
+    $pdf=PDF::loadView('admin.pdf',compact('rent'));
+
+    return $pdf->download('rent_details.pdf');
 
    }
 }

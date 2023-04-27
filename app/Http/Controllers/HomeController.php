@@ -64,7 +64,7 @@ class HomeController extends Controller
         return view('home.userpage', compact('flat'));
     }
 
-    public function flat_details($id)
+    public function flat_details(Request $request, $id)
     {
 
         $flat = flat::find($id);
@@ -75,14 +75,13 @@ class HomeController extends Controller
 
     public function rent(Request $request, $id)
     {
-
+        // dd($request);
 
         if (Auth::id()) {
             $user = Auth::user();
 
             $flat = flat::find($id);
-            $flat = flat::find($id);
-
+            // $flat = flat::find($id);
             $cart = new cart;
 
             $cart->name = $user->name;
@@ -98,6 +97,8 @@ class HomeController extends Controller
             $cart->flat_title = $flat->title;
 
             $cart->rent = $flat->rent;
+
+            // $cart->rent_duration = $flat->rent_duration;
 
             $cart->image = $flat->image;
 
@@ -123,6 +124,7 @@ class HomeController extends Controller
             $id = Auth::user()->id;
 
             $cart = cart::where('user_id', '=', $id)->get();
+            // dd($cart);
             return view('home.showcart', compact('cart'));
 
         } else {
@@ -258,12 +260,13 @@ class HomeController extends Controller
         return back();
     }
 
-public function about_us(){
+    public function about_us()
+    {
 
-    return view('home.aboutus');
-}
+        return view('home.aboutus');
+    }
 
-// Import the Flat model at the top of the controller
+    // Import the Flat model at the top of the controller
 
 
 
@@ -273,6 +276,26 @@ public function about_us(){
         $flats = Flat::all();
         return view('home.flat');
     }
+
+    public function store(Request $request, $flat_id)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'rating' => 'required|numeric|min:1|max:5',
+        ]);
+
+        // Get the authenticated user
+        $user = Auth::user();
+
+        // Create a new Rating instance and save it to the database
+        $rating = new Rating();
+        $rating->user_id = $user->id;
+        $rating->flat_id = $flat_id;
+        $rating->rating = $validatedData['rating'];
+        $rating->save();
+
+        // Redirect back to the page with a success message
+        return redirect()->back()->with('success', 'Thank you for rating this flat!');
+    }
+
 }
-
-

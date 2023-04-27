@@ -64,6 +64,8 @@
    <th class="th_deg">Rent </th>
    <th class="th_deg">Image </th>
    <th class="th_deg">Action </th>
+   <!--<th class="th_deg">Rent duratition</th>-->
+
    
 </tr>
 
@@ -72,10 +74,18 @@
 <tr>
     <td>{{$cart->flat_title}}</td>
     <td>Rs.{{$cart->rent}}</td>
+    
     <td><img class="img_deg" src="/flat/{{$cart->image}}"></td>
     
     <td><a class="btn btn-danger" href="{{url('/remove_cart' ,$cart->id)}}">Remove Flat</a></td>
-            
+
+    <!--<td><div class="div_design">
+   <-- <form method="POST" action="{{url('/store_rent_duration')}}">
+
+                  <label>Rent Duration(years):</label>
+                    <input class="text_color" type="number" name="rent_duration" placeholder="Rent duration" required>
+
+    </div></td>-->
 </tr>
 <?php $totalrent= $totalrent + $cart->rent ?>
 
@@ -126,11 +136,7 @@
      
       <!-- footer end -->
       <div class="cpy_">
-         <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
          
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-         
-         </p>
       </div>
       
       <script>

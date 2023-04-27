@@ -41,8 +41,8 @@
           <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
             <div class="ps-lg-1">
               <div class="d-flex align-items-center justify-content-between">
-                <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
-                <a href="https://www.bootstrapdash.com/product/corona-free/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
+                
+                <a href="https://www.bootstrapdash.com/product/corona-free/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0"></a>
               </div>
             </div>
             <div class="d-flex align-items-center justify-content-between">
@@ -74,6 +74,7 @@
                 <th>Rent</th>
                 <th>Payment Status</th>
                 <th>Image</th>
+                <th>Print PDF</th>
                 
     </tr>
     
@@ -90,6 +91,10 @@
         <td>
             <img class="img_size" src="/flat/{{$order->image}}">
         </td>
+
+        <td>
+          <a href="{{url('print_pdf',$order->id)}}" class="btn btn-secondary">Print PDF</a>
+      </td>
     </tr>
 
     @endforeach

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('flat_title')->nullable();
             $table->string('rent')->nullable();
+            
+
             $table->string('image')->nullable();
             $table->string('flat_id')->nullable();
             $table->string('user_id')->nullable();

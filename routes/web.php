@@ -105,3 +105,11 @@ route::get('/recommendations', [RecommendationController::class, 'generateRecomm
 route::get('/about_us', [HomeController::class, 'about_us']);
 
 Route::get('/flats', 'HomeController@flat');
+
+route::get('/print_pdf/{id}', [AdminController::class, 'print_pdf']);
+
+//Route::get('/recommendations', [RecommendationController::class, 'showRecommendations'])->name('recommendations');
+
+//Route::post('/flats/{flat_id}/ratings', 'RatingsController@store')->name('ratings.store');
+
+
