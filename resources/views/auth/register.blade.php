@@ -29,7 +29,15 @@
                 <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="address" />
             </div>
 
+            <div class="mt-4">
+                <x-label for="latitude" value="{{ __('Latitude') }}" />
+                <x-input id="latitude" class="block mt-1 w-full" type="text" name="latitude" :value="old('latitude')" required autocomplete="off" />
+            </div>
 
+            <div class="mt-4">
+                <x-label for="longitude" value="{{ __('Longitude') }}" />
+                <x-input id="longitude" class="block mt-1 w-full" type="text" name="longitude" :value="old('longitude')" required autocomplete="off" />
+            </div>
 
 
             <div class="mt-4">

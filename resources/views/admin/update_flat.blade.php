@@ -70,9 +70,20 @@
 
     </div>
     <div class="div_design">
-      <label for="location">Flat Location Here :</label>
-      <input class="text_color" type="text" name="location" id="location" placeholder="Flat location" value="{{$flat->location}}">
-    </div>
+  <label for="location">Flat Location Here:</label>
+  <input class="text_color" type="text" name="location" id="location" placeholder="Flat location" required="" value="{{$flat->location}}">
+</div>
+
+<div class="div_design">
+  <label for="latitude">Latitude:</label>
+  <input class="text_color" type="text" name="latitude" id="latitude" placeholder="Latitude" required="" value="{{$flat->latitude}}">
+</div>
+
+<div class="div_design">
+  <label for="longitude">Longitude:</label>
+  <input class="text_color" type="text" name="longitude" id="longitude" placeholder="Longitude" required="" value="{{$flat->longitude}}">
+</div>
+
     
 
     <div class="div_design">

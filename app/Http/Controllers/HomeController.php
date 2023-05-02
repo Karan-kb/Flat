@@ -271,9 +271,12 @@ class HomeController extends Controller
 
 
 
-    public function flat()
+    public function flat($id)
     {
         $flats = Flat::all();
+        $flat = Flat::findOrFail($id);
+        $latitude = $flat->latitude;
+        $longitude = $flat->longitude;
         return view('home.flat');
     }
 
@@ -297,5 +300,14 @@ class HomeController extends Controller
         // Redirect back to the page with a success message
         return redirect()->back()->with('success', 'Thank you for rating this flat!');
     }
+   
+
+    public function show()
+    {
+        $flats = Flat::select('id', 'name', 'latitude', 'longitude')->get();
+    
+        return view('home.flat_details', compact('flats'));
+    }
+    
 
 }

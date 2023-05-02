@@ -112,4 +112,11 @@ route::get('/print_pdf/{id}', [AdminController::class, 'print_pdf']);
 
 //Route::post('/flats/{flat_id}/ratings', 'RatingsController@store')->name('ratings.store');
 
+//Route::get('/flats/by-distance', [HomeController::class, 'getFlatsByDistance'])->name('flats.by-distance');
+
+//Route::get('/flats/{id}', [FlatController::class, 'show'])->name('flats.show');
+Route::get('/showMap/{id}', [HomeController::class, 'showMap']);
+
+
+
 

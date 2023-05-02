@@ -56,6 +56,8 @@ class AdminController extends Controller
 
           $flat->description=$request->description;
           $flat->location=$request->location;
+          $flat->latitude = $request->latitude;
+        $flat->longitude = $request->longitude;
 
           $flat->rent=$request->rent;
          
@@ -108,6 +110,8 @@ class AdminController extends Controller
     $flat->description=$request->description;
     $flat->rent=$request->rent;
     $flat->location=$request->location;
+    $flat->latitude=$request->latitude;
+    $flat->longitude=$request->longitude;
     $flat->category=$request->category;
     $flat->tenants_quantity=$request->tenants_quantity;
 

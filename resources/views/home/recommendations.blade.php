@@ -13,13 +13,13 @@
       
       <title>Flat Rental System</title>
       <!-- bootstrap core css -->
-      <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
+      <link rel="stylesheet" type="text/css" href="{{ asset('home/css/bootstrap.css') }}" />
       <!-- font awesome style -->
-      <link href="home/css/font-awesome.min.css" rel="stylesheet" />
+      <link href="{{ asset('home/css/font-awesome.min.css') }}" rel="stylesheet" />
       <!-- Custom styles for this template -->
-      <link href="home/css/style.css" rel="stylesheet" />
+      <link href="{{ asset('home/css/style.css') }}" rel="stylesheet" />
       <!-- responsive style -->
-      <link href="home/css/responsive.css" rel="stylesheet" />
+      <link href="{{ asset('home/css/responsive.css') }}" rel="stylesheet" />
    </head>
    <style type="text/css">
       section.recommend_deg {
@@ -30,19 +30,18 @@
    <body>
    @include('home.header')
    <div class="row">
-@foreach($recommendations as $flat_id => $score)
-    @php($product = App\Models\Flat::find($flat_id))
+@foreach($recommendations as $flat)
     <div class="col-sm-6 col-md-4 col-lg-4">
         <div class="box">
             <div class="option_container">
                 <div class="options">
-                    <a href="{{ url('rate_flat', $product->id) }}" class="option1">
+                    <a href="{{ url('rate_flat', $flat->id) }}" class="option1">
                         Rate this flat
                     </a>
-                    <a href="{{ url('flat_details', $product->id) }}" class="option1">
+                    <a href="{{ url('flat_details', $flat->id) }}" class="option1">
                         Flat Details
                     </a>
-                    <form action="{{ url('rent', $product->id) }}" method="POST">
+                    <form action="{{ url('rent', $flat->id) }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
@@ -53,14 +52,14 @@
                 </div>
             </div>
             <div class="img-box">
-                <img src="{{ asset('flat/'.$product->image) }}" alt="">
+                <img src="{{ asset('flat/'.$flat->image) }}" alt="">
             </div>
             <div class="detail-box">
                 <h5>
-                    {{ $product->title }}
+                    {{ $flat->title }}
                 </h5> 
                 <h6>
-                    Rs.{{ $product->rent }}
+                    Rs.{{ $flat->rent }}
                 </h6>
             </div>
         </div>

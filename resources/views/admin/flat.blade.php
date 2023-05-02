@@ -69,9 +69,20 @@
 
     </div>
     <div class="div_design">
-      <label for="location">Flat Location Here :</label>
-      <input class="text_color" type="text" name="location" id="location" placeholder="Flat location">
-    </div>
+  <label for="location">Flat Location Here:</label>
+  <input class="text_color" type="text" name="location" id="location" placeholder="Flat location" required>
+</div>
+
+<div class="div_design">
+  <label for="latitude">Latitude:</label>
+  <input class="text_color" type="text" name="latitude" id="latitude" placeholder="Latitude" required>
+</div>
+
+<div class="div_design">
+  <label for="longitude">Longitude:</label>
+  <input class="text_color" type="text" name="longitude" id="longitude" placeholder="Longitude" required>
+</div>
+
 
     <div class="div_design">
           <label>Phone :</label>

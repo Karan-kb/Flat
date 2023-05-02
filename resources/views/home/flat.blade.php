@@ -49,7 +49,7 @@
                            {{$flats->title}}
                         </h5> 
                         <h6>
-                        Rs.{{$flats->rent}}
+                        Rs.{{$flats->rent}}/month
                         </h6>
 
                         

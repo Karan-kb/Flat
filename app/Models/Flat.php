@@ -9,7 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 class Flat extends Model
 {
     use HasFactory;
-    protected $table = 'flats';
+    protected $table = 'flats'
+    ;
+
+   
+
+    protected $fillable = [
+        'title',
+        'latitude',
+        'longitude',
+        // other fields in your flats table
+    ];
 
     public function getFlats()
    {
