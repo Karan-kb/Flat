@@ -64,12 +64,14 @@ class HomeController extends Controller
         return view('home.userpage', compact('flat'));
     }
 
-    public function flat_details(Request $request, $id)
+    public function flat_details(Request $request,$id)
     {
 
         $flat = flat::find($id);
+        $rent= $flat->rent;
+        
 
-        return view('home.flat_details', compact('flat'));
+        return view('home.flat_details', compact('flat','rent'));
 
     }
 
@@ -200,60 +202,60 @@ class HomeController extends Controller
 
     }
 
-    public function stripe($totalrent)
+    public function stripe($rent)
     {
 
 
-        return view('home.stripe', compact('totalrent'));
+        return view('home.stripe', compact('rent'));
     }
 
-    public function stripePost(Request $request, $totalrent)
+    public function stripePost(Request $request, $rent)
     {
 
 
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         Stripe\Charge::create([
-            "amount" => $totalrent * 100,
+            "amount" => $rent * 100,
             "currency" => "usd",
             "source" => $request->stripeToken,
             "description" => "Thanks for the payment."
         ]);
 
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        $userid = $user->id;
+        // $userid = $user->id;
 
-        $data = cart::where('user_id', '=', $userid)->get();
+        // $data = cart::where('user_id', '=', $userid)->get();
 
-        foreach ($data as $data) {
+        // foreach ($data as $data) {
 
-            $rent = new rent;
+        //     $rent = new rent;
 
-            $rent->name = $data->name;
-            $rent->email = $data->email;
-            $rent->phone = $data->phone;
-            $rent->address = $data->address;
-            $rent->user_id = $data->user_id;
-            $rent->flat_title = $data->flat_title;
+        //     $rent->name = $data->name;
+        //     $rent->email = $data->email;
+        //     $rent->phone = $data->phone;
+        //     $rent->address = $data->address;
+        //     $rent->user_id = $data->user_id;
+        //     $rent->flat_title = $data->flat_title;
 
-            $rent->rent = $data->rent;
-            $rent->image = $data->image;
-            $rent->flat_id = $data->flat_id;
+        //     $rent->rent = $data->rent;
+        //     $rent->image = $data->image;
+        //     $rent->flat_id = $data->flat_id;
 
-            $rent->payment_status = "Paid";
-
-
-            $rent->save();
-
-            $cart_id = $data->id;
-
-            $cart = cart::find($cart_id);
-
-            $cart->delete();
+        //     $rent->payment_status = "Paid";
 
 
-        }
+        //     $rent->save();
+
+        //     $cart_id = $data->id;
+
+        //     $cart = cart::find($cart_id);
+
+        //     $cart->delete();
+
+
+        
 
         Session::flash('success', 'Payment successful!');
 

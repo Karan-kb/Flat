@@ -58,11 +58,18 @@ Phone:{{$flat->phone}}
 <h7 style="color:black">
 Flat Details: {{$flat->description}}
    </h7><br />
-   <form action="{{url('rent',$flat->id)}}" method="Post">
+   <form action="{{url('stripe',$flat->id)}}" method="Post">
 @csrf
 <div class="row">
 <div class="col-md-4">
-<input type="submit" value="Rent">
+ 
+    <a href="{{url('stripe',$rent)}}" class="btn btn-danger">Rent</a>
+    <!-- Add this line if you're using Laravel and need CSRF protection -->
+
+    <!-- Your other form fields can go here if needed -->
+
+
+
 </div>
 </div>
 </form>

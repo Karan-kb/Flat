@@ -105,8 +105,9 @@
         <h1 style="font-size:25px; padding-bottom:15px;">Proceed To Rent</h1>
 
         <a href="{{url('cash_rent')}}" class="btn btn-danger">Cash Payment</a>
-
-         <a href="{{url('stripe',$totalrent)}}" class="btn btn-danger">Pay Using Card</a>
+      
+       <a href="{{url('stripe',$totalrent)}}" class="btn btn-danger">Pay Using Card</a>
+        
     </div>
 
 

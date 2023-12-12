@@ -15,11 +15,11 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->unsignedBigInteger('flat_id');
-            $table->integer('water_rating')->nullable();
-            $table->integer('location_rating')->nullable();
-            $table->integer('price_rating')->nullable();
-            $table->integer('transportation_rating')->nullable();
-            $table->integer('cleanliness_rating')->nullable();
+            $table->integer('water_rating')->nullable()->change();
+            $table->integer('location_rating')->nullable()->change();
+            $table->integer('price_rating')->nullable()->change();
+            $table->integer('transportation_rating')->nullable()->change();
+            $table->integer('cleanliness_rating')->nullable()->change();
             $table->double('average')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

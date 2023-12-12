@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->double('latitude', 15, 8)->nullable()->change();
+        Schema::table('flats', function (Blueprint $table) {
+            $table->decimal('latitude', 10, 8)->nullable();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
+        Schema::table('flats', function (Blueprint $table) {
+            $table->dropColumn('latitude');
         });
     }
 };

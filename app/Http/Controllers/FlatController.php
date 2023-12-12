@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Flat;
 use Illuminate\Http\Request;
 
 class FlatController extends Controller

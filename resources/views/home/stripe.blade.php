@@ -22,7 +22,7 @@
     
 <div class="container">
     
-    <h1 style="text-align:center; font-size:24px; padding-bottom:20px; ">Pay Using Card -- Total Amount Rs. {{$totalrent}}</h1>
+    <h1 style="text-align:center; font-size:24px; padding-bottom:20px; ">Pay Using Card -- Total Amount Rs. {{$rent}}</h1>
     
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -41,7 +41,7 @@
     
                     <form 
                             role="form" 
-                            action="{{ route('stripe.post', $totalrent) }}" 
+                            action="{{ route('stripe.post', $rent) }}" 
                             method="post" 
                             class="require-validation"
                             data-cc-on-file="false"
@@ -88,10 +88,10 @@
                                     again.</div>
                             </div>
                         </div>
-    
+                        <input type="hidden" name="rent" value="{{ $rent }}">
                         <div class="row">
                             <div class="col-xs-12">
-                                <input type="submit" name="" value="Pay Now" >
+                                <input type="submit" value="Pay Now({{$rent}})" >
                             </div>
                         </div>
                             

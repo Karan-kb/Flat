@@ -61,12 +61,12 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{url('add_flat')}}">Add Flats</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{url('view_flat')}}">View Flats</a></li>
-                
+                <li class="nav-item"><a class="nav-link" href="{{route('add_flat')}}">Add Flats</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('view_flat')}}">View Flats</a></li>
               </ul>
             </div>
           </li>
+          
           <li class="nav-item menu-items">
             <a class="nav-link" href="{{url('view_category')}}">
               <span class="menu-icon">
@@ -87,3 +87,7 @@
           
         </ul>
       </nav>
+
+     
+     
+      <!-- Include jQuery -->

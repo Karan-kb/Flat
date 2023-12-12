@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Models\Category;
-
 use App\Models\Flat;
-use App\Models\User;
-use App\Models\Rating;
-use App\Models\Order;
-use PDF;
 
 use App\Models\Rent;
+
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Rating;
+use App\Models\Category;
+use Barryvdh\DomPDF\PDF;
+
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {

@@ -47,7 +47,7 @@ route::get('/view_flat', [AdminController::class, 'view_flat']);
 Route::get('/flats/{flat}/rate', 'RatingController@create')->name('ratings.create');
 Route::post('/flats/{flat}/rate', 'RatingController@store')->name('ratings.store');
 
-Route::post('/ratings', 'RatingController@store')->name('ratings.store');
+
 Route::put('/ratings/{rating}', 'RatingController@update')->name('ratings.update');
 
 
@@ -73,8 +73,7 @@ route::get('/flat_search', [HomeController::class, 'flat_search']);
 
 Route::get('/recommend', [RecommendationController::class, 'getRecommendation'])
     ->name('getRecommendation');
-Route::post('/recommend', [RecommendationController::class, 'getRecommendation'])
-    ->name('getRecommendation');
+
 
 route::get('/flat_details/{id}', [HomeController::class, 'flat_details']);
 route::get('/delete_flat/{id}', [AdminController::class, 'delete_flat']);
@@ -94,9 +93,9 @@ route::get('/remove_cart/{id}', [HomeController::class, 'remove_cart']);
 
 route::get('/cash_rent', [HomeController::class, 'cash_rent']);
 
-route::get('/stripe/{totalrent}', [HomeController::class, 'stripe']);
+route::get('/stripe/{rent}', [HomeController::class, 'stripe']);
 
-Route::post('stripe/{totalrent}', [HomeController::class, 'stripePost'])->name('stripe.post');
+Route::post('stripe/{rent}', [HomeController::class, 'stripePost'])->name('stripe.post');
 
 route::get('/order', [AdminController::class, 'order']);
 route::get('/recommendations', [RecommendationController::class, 'generateRecommendations']);
@@ -116,6 +115,8 @@ route::get('/print_pdf/{id}', [AdminController::class, 'print_pdf']);
 
 //Route::get('/flats/{id}', [FlatController::class, 'show'])->name('flats.show');
 Route::get('/showMap/{id}', [HomeController::class, 'showMap']);
+
+Route::get('/stripe/{rent}',[HomeController::class, 'stripe']);
 
 
 
